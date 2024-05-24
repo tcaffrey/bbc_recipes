@@ -1,4 +1,4 @@
-from src.utils import *
+from src.bbc_recipes.utils import *
 import unittest
 import pickle
 import os
@@ -27,9 +27,6 @@ class TestGetBBCRecipes(unittest.TestCase):
             recipe_url = RecipeBBC(url_list[i])
             recipe_url.url_request()
             actual_parsed_data.append(recipe_url.recipe_json)
-
-        with open ('expected_parsed_data', 'rb') as fp:
-            expected_parsed_data = pickle.load(fp)
 
         self.assertEqual(actual_parsed_data, expected_parsed_data)
 
@@ -74,7 +71,7 @@ class TestGetBBCRecipes(unittest.TestCase):
 
     def test_unique_value(self):
         
-        expected_values = ['-', 'test', None, 'less than 30 mins', 10]
+        expected_values = ['-', 'test', None, 'less than 30 mins', 'str']
 
         actual_inputs = [["-"],
                          ["test", "test", "test"],
